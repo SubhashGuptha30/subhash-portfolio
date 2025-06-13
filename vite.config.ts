@@ -14,4 +14,9 @@ export default defineConfig(({ mode }) => ({
     },
   },
   base: "/subhash-portfolio/",
+  server: {
+    port: 3000,
+    host: true,
+    strictPort: true,
+  },
 }));
