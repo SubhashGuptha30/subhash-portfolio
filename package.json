@@ -1,5 +1,6 @@
 {
   "name": "portfolio-website",
+  "private": true,
   "homepage": "https://SubhashGuptha30.github.io/subhash-portfolio/",
   "version": "0.0.0",
   "type": "module",
