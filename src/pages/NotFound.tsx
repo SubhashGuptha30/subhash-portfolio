@@ -1,4 +1,3 @@
-
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -26,7 +25,7 @@ const NotFound = () => {
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`
+              animationDuration: `${2 + Math.random() * 2}s`,
             }}
           />
         ))}
@@ -42,8 +41,8 @@ const NotFound = () => {
             <p className="text-lg text-gray-300 mb-8 max-w-md">
               We can't seem to find the space you're looking for :(
             </p>
-            <Button 
-              onClick={() => window.location.href = '/'}
+            <Button
+              onClick={() => (window.location.href = "/Index")}
               className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
             >
               Back to Home
@@ -54,7 +53,7 @@ const NotFound = () => {
           <div className="relative">
             <div className="relative transform rotate-12 hover:rotate-6 transition-transform duration-500">
               <Satellite className="w-48 h-48 text-blue-400" />
-              
+
               {/* Satellite details */}
               <div className="absolute top-8 left-12 w-6 h-6 bg-yellow-400 rounded-full animate-pulse"></div>
               <div className="absolute top-16 right-8 w-4 h-4 bg-blue-300 rounded-full animate-pulse delay-75"></div>
@@ -62,8 +61,17 @@ const NotFound = () => {
             </div>
 
             {/* Orbital rings */}
-            <div className="absolute inset-0 border-2 border-blue-400/20 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
-            <div className="absolute inset-4 border border-blue-300/10 rounded-full animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+            <div
+              className="absolute inset-0 border-2 border-blue-400/20 rounded-full animate-spin"
+              style={{ animationDuration: "20s" }}
+            ></div>
+            <div
+              className="absolute inset-4 border border-blue-300/10 rounded-full animate-spin"
+              style={{
+                animationDuration: "15s",
+                animationDirection: "reverse",
+              }}
+            ></div>
           </div>
         </div>
       </div>

@@ -1,11 +1,10 @@
-
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import CreativeGallery from '@/components/CreativeGallery';
-import PhotoGallery from '@/components/PhotoGallery';
-import Watchlist from '@/components/Watchlist';
-import Hobbies from '@/components/Hobbies';
+import { Link } from "react-router-dom";
+import { ArrowLeft, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import CreativeGallery from "@/components/CreativeGallery";
+import PhotoGallery from "@/components/PhotoGallery";
+import Watchlist from "@/components/Watchlist";
+import Hobbies from "@/components/Hobbies";
 
 const PersonalSpace = () => {
   return (
@@ -19,7 +18,10 @@ const PersonalSpace = () => {
 
       <header className="relative py-8 px-6 max-w-7xl mx-auto">
         <Button asChild variant="ghost" className="group">
-          <Link to="/" className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-all duration-300">
+          <Link
+            to="/Index"
+            className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-all duration-300"
+          >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
             Back to Portfolio
           </Link>
@@ -36,23 +38,24 @@ const PersonalSpace = () => {
             <Sparkles className="absolute -top-4 -right-4 w-8 h-8 text-yellow-400 animate-bounce" />
           </div>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            A glimpse into my world beyond programming — where creativity meets passion.
+            A glimpse into my world beyond programming — where creativity meets
+            passion.
           </p>
           <div className="mt-8 w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full"></div>
         </div>
 
         {/* Content Sections with staggered animations */}
         <div className="space-y-24">
-          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <CreativeGallery />
           </div>
-          <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <div className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
             <PhotoGallery />
           </div>
-          <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <div className="animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <Watchlist />
           </div>
-          <div className="animate-fade-in" style={{ animationDelay: '0.8s' }}>
+          <div className="animate-fade-in" style={{ animationDelay: "0.8s" }}>
             <Hobbies />
           </div>
         </div>
