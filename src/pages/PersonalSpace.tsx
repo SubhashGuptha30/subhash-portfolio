@@ -5,6 +5,7 @@ import CreativeGallery from "@/components/CreativeGallery";
 import PhotoGallery from "@/components/PhotoGallery";
 import Watchlist from "@/components/Watchlist";
 import Hobbies from "@/components/Hobbies";
+import Footer from "@/components/Footer";
 
 const PersonalSpace = () => {
   return (
@@ -19,7 +20,7 @@ const PersonalSpace = () => {
       <header className="relative py-8 px-6 max-w-7xl mx-auto">
         <Button asChild variant="ghost" className="group">
           <Link
-            to="/Index"
+            to="/subhash-portfolio"
             className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-all duration-300"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
@@ -60,6 +61,7 @@ const PersonalSpace = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

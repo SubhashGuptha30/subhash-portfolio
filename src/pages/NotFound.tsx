@@ -42,7 +42,7 @@ const NotFound = () => {
               We can't seem to find the space you're looking for :(
             </p>
             <Button
-              onClick={() => (window.location.href = "/Index")}
+              onClick={() => (window.location.href = "/subhash-portfolio")}
               className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
             >
               Back to Home
