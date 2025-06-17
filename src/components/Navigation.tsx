@@ -31,7 +31,7 @@ const Navigation = ({
   return (
     <header className="bg-gray-900/90 backdrop-blur-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link to="/subhash-portfolio" className="text-2xl font-bold text-white">
+        <Link to="/" className="text-2xl font-bold text-white">
           Subhash.dev
         </Link>
 

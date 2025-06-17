@@ -4,11 +4,10 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/subhash-portfolio/",
+  base: "/subhash-portfolio",
   server: {
     host: "::",
     port: 8080,
-    historyApiFallback: true,
   },
   plugins: [react()].filter(Boolean),
   resolve: {

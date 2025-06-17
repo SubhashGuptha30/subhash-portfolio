@@ -1,10 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Satellite } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.error(
@@ -12,6 +13,10 @@ const NotFound = () => {
       location.pathname
     );
   }, [location.pathname]);
+
+  const handleBackToHome = () => {
+    navigate("/");
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden flex items-center justify-center">
@@ -42,7 +47,7 @@ const NotFound = () => {
               We can't seem to find the space you're looking for :(
             </p>
             <Button
-              onClick={() => (window.location.href = "/subhash-portfolio")}
+              onClick={handleBackToHome}
               className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
             >
               Back to Home

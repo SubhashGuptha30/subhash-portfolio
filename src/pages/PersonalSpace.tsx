@@ -20,7 +20,7 @@ const PersonalSpace = () => {
       <header className="relative py-8 px-6 max-w-7xl mx-auto">
         <Button asChild variant="ghost" className="group">
           <Link
-            to="/subhash-portfolio"
+            to="/"
             className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-all duration-300"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
