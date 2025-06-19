@@ -11,10 +11,17 @@ const PersonalSpace = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white">
       {/* Animated background particles */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 py-12 px-12 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400 rounded-full animate-pulse opacity-60"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-purple-400 rounded-full animate-pulse opacity-40 animation-delay-1000"></div>
-        <div className="absolute top-1/2 left-3/4 w-3 h-3 bg-blue-400 rounded-full animate-pulse opacity-30 animation-delay-2000"></div>
+        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-purple-400 rounded-full animate-pulse opacity-40"></div>
+        <div className="absolute top-1/2 left-3/4 w-3 h-3 bg-blue-400 rounded-full animate-pulse opacity-30"></div>
+        <div className="absolute top-1/3 left-2/3 w-2.5 h-2.5 bg-pink-400 rounded-full animate-pulse opacity-50"></div>
+        <div className="absolute top-2/3 left-1/5 w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse opacity-40"></div>
+        <div className="absolute top-1/6 right-1/6 w-2 h-2 bg-green-400 rounded-full animate-pulse opacity-35"></div>
+        <div className="absolute top-4/5 left-1/2 w-1 h-1 bg-red-400 rounded-full animate-pulse opacity-30"></div>
+        <div className="absolute top-1/2 right-1/3 w-2 h-2 bg-indigo-400 rounded-full animate-pulse opacity-45"></div>
+        <div className="absolute top-1/5 left-4/5 w-2.5 h-2.5 bg-teal-400 rounded-full animate-pulse opacity-50"></div>
+        <div className="absolute top-3/5 right-2/5 w-4.5 h-4.5 bg-orange-400 rounded-full animate-pulse opacity-40"></div>
       </div>
 
       <header className="relative py-8 px-6 max-w-7xl mx-auto">

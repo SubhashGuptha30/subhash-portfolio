@@ -1,5 +1,4 @@
-
-import { Languages as LanguagesIcon } from 'lucide-react';
+import { Languages as LanguagesIcon } from "lucide-react";
 
 const languages = [
   { name: "Telugu", level: "Native" },
@@ -21,8 +20,13 @@ const Languages = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           {languages.map((lang, index) => (
-            <div key={index} className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-2">
-              <h3 className="text-2xl font-semibold text-cyan-400">{lang.name}</h3>
+            <div
+              key={index}
+              className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <h3 className="text-2xl font-semibold text-cyan-400">
+                {lang.name}
+              </h3>
               <p className="text-gray-400">{lang.level}</p>
             </div>
           ))}

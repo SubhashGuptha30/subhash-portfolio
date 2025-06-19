@@ -77,6 +77,12 @@ export const watchlist = {
   movies: ["Interstellar", "Johnny English", "A Silent Voice", "Dune"],
   series: ["Arrow", "Flash", "Dark", "Breaking Bad"],
   anime: ["One Piece", "Attack on Titan", "Your Lie in April", "Hello World"],
+  franchises: [
+    "Marvel Cinematic Universe",
+    "Harry Potter",
+    "Star Wars",
+    "The Lord of the Rings",
+  ],
 };
 
 export const hobbies = [
