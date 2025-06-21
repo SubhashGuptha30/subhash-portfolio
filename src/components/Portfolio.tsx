@@ -1,12 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { projects } from "@/data/projects";
-import { ExternalLink, Folders } from "lucide-react";
+import { ExternalLink, Folders, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Portfolio = () => {
-  const handleCardClick = (link: string | null) => {
-    if (link) {
-      window.open(link, "_blank", "noopener noreferrer");
-    }
+  const navigate = useNavigate();
+
+  const handleCardClick = (index: number, link: string | null) => {
+    // Always navigate to project detail page
+    navigate(`/project/${index}`);
   };
 
   return (
@@ -25,10 +27,8 @@ const Portfolio = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className={`bg-gray-900 border-gray-700 text-white group h-80 flex flex-col transition-all duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/10 ${
-                project.link ? "cursor-pointer" : ""
-              }`}
-              onClick={() => handleCardClick(project.link)}
+              className="bg-gray-900 border-gray-700 text-white group h-80 flex flex-col transition-all duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/10 cursor-pointer"
+              onClick={() => handleCardClick(index, project.link)}
             >
               <div className="relative flex-1 overflow-hidden rounded-t-lg">
                 <img
@@ -36,13 +36,11 @@ const Portfolio = () => {
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                {project.link && (
-                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-gray-900/80 backdrop-blur-sm p-2 rounded-full">
-                      <ExternalLink className="w-4 h-4 text-cyan-400" />
-                    </div>
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-gray-900/80 backdrop-blur-sm p-2 rounded-full">
+                    <ArrowRight className="w-4 h-4 text-cyan-400" />
                   </div>
-                )}
+                </div>
               </div>
               <div className="p-6 flex-shrink-0">
                 <CardTitle className="text-xl font-semibold mb-3 line-clamp-2">

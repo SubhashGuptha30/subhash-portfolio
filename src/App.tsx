@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Loader from "./components/Loader";
 import PersonalSpace from "./pages/PersonalSpace";
+import ProjectDetail from "./pages/ProjectDetail";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +37,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/personal-space" element={<PersonalSpace />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/project/:id" element={<ProjectDetail />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THIS LINE */}
+
+            {/* Catch-all route for 404 Not Found */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
