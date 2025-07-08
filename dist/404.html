@@ -31,10 +31,40 @@
       content="This is a portfoliio website designed and maintained by Subhash Guptha Gantasala."
     />
     <meta property="og:type" content="website" />
+
+    <script>
+      // GitHub Pages SPA redirect script
+      // This script takes the current URL and redirects to the index page
+      // with the path as a query parameter that can be handled by the router
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
   </head>
 
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Redirect to index.html with the path preserved
+      window.location.replace(
+        "/subhash-portfolio/index.html" +
+          window.location.pathname.replace("/subhash-portfolio", "") +
+          window.location.search +
+          window.location.hash
+      );
+    </script>
   </body>
 </html>
