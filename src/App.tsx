@@ -33,7 +33,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/">
+        <BrowserRouter basename="/subhash-portfolio">
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/personal-space" element={<PersonalSpace />} />
