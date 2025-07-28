@@ -1,17 +1,18 @@
 export const certificates = [
   {
     id: 1,
-    title: "AWS Cloud Course Certification",
-    image: "https://i.postimg.cc/SsTqPrzb/AWS-cloud.png",
+    title: "Oracle Certified Professional",
+    subTitle: "Certificate of Recognition",
+    certifiedBy: "Oracle University",
+    date: "July 18, 2025",
+    image: "/uploads/oracle-certificate.png",
   },
   {
     id: 2,
-    title: "Corizo Certificate of AI Training",
-    image: "https://i.postimg.cc/yNDwdHDt/Corizo-training.png",
-  },
-  {
-    id: 3,
-    title: "Corizo Certificate of Internship",
-    image: "https://i.postimg.cc/NfhzZRZ1/Corizo-internship.png",
+    title: "Introduction to Deep Learning",
+    subTitle: "Certificate of Completion",
+    certifiedBy: "Infosys Springboard",
+    date: "July 15, 2025",
+    image: "/uploads/deep-learning-certificate.png",
   },
 ];

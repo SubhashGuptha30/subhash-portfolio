@@ -22,13 +22,12 @@ export const projects = [
     link: "https://github.com/SubhashGuptha30/SpotifyMiniProject",
   },
   {
-    title: "AI Nutrition Tracking System",
+    title: "YouTube Music Downloader App",
     description:
-      "Computer vision-based food image analysis with personalized meal planning recommendations",
-    tech: ["Python", "TensorFlow", "OpenCV", "React"],
-    image:
-      "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&h=400&fit=crop",
-    link: null,
+      "a standalone Windows application designed to download YouTube videos or audio files with ease. It offers a modern, user-friendly graphical interface built with CustomTkinter, supporting both dark and light themes for a polished experience",
+    tech: ["Python", "CustomTkinter", "Tkinter"],
+    image: "/uploads/yt-downloader.png",
+    link: "https://github.com/SubhashGuptha30/Youtube-Music-Downloader",
   },
   {
     title: "Quantum-Inspired Grey Wolf Optimization",
