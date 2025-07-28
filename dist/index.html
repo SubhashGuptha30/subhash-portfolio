@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Subhash Guptha Portfolio</title>
-    <link rel="shortcut icon" href="/subhash-portfolio/favicon.ico" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="/subhash-portfolio/favicon.ico"
+      type="image/x-icon"
+    />
 
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
@@ -29,27 +33,24 @@
     <meta property="og:type" content="website" />
 
     <script>
-      // GitHub Pages SPA redirect script
-      // This script takes the current URL and redirects to the index page
-      // with the path as a query parameter that can be handled by the router
-      (function (l) {
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("?");
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          );
+      // GitHub Pages SPA routing fix
+      // This script handles the path parameter from 404 redirects
+      (function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        var path = urlParams.get("path");
+
+        if (path) {
+          // Remove the path parameter from the URL
+          urlParams.delete("path");
+          var newSearch = urlParams.toString();
+          var newUrl = path + (newSearch ? "?" + newSearch : "");
+
+          // Update the URL without reloading the page
+          window.history.replaceState(null, null, newUrl);
         }
-      })(window.location);
+      })();
     </script>
-    <script type="module" crossorigin src="/subhash-portfolio/assets/index-o6KHV2CT.js"></script>
+    <script type="module" crossorigin src="/subhash-portfolio/assets/index-BIcsEKuS.js"></script>
     <link rel="stylesheet" crossorigin href="/subhash-portfolio/assets/index-KTgylejP.css">
   </head>
 
