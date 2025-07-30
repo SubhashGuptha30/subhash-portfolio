@@ -11,7 +11,7 @@ call npm install
 
 REM Build the project
 echo 🔨 Building project...
-call npm run build
+call npm run build:domain
 
 REM Check if build was successful
 if %errorlevel% equ 0 (
@@ -34,4 +34,4 @@ if %errorlevel% equ 0 (
     exit /b 1
 )
 
-pause 
+pause
