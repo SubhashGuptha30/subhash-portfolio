@@ -1,3 +1,6 @@
+import OracleCert from "/uploads/oracle-certificate.png";
+import DeepLearningCert from "/uploads/deep-learning-certificate.png";
+
 export const certificates = [
   {
     id: 1,
@@ -5,7 +8,7 @@ export const certificates = [
     subTitle: "Certificate of Recognition",
     certifiedBy: "Oracle University",
     date: "July 18, 2025",
-    image: "/uploads/oracle-certificate.png",
+    image: OracleCert,
   },
   {
     id: 2,
@@ -13,6 +16,6 @@ export const certificates = [
     subTitle: "Certificate of Completion",
     certifiedBy: "Infosys Springboard",
     date: "July 15, 2025",
-    image: "/uploads/deep-learning-certificate.png",
+    image: DeepLearningCert,
   },
 ];

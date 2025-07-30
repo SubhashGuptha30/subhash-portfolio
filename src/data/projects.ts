@@ -1,3 +1,5 @@
+import ytDownloaderImage from "/uploads/yt-downloader.png";
+
 export const projects = [
   {
     title: "Movie Streaming Website",
@@ -26,7 +28,7 @@ export const projects = [
     description:
       "a standalone Windows application designed to download YouTube videos or audio files with ease. It offers a modern, user-friendly graphical interface built with CustomTkinter, supporting both dark and light themes for a polished experience",
     tech: ["Python", "CustomTkinter", "Tkinter"],
-    image: "/uploads/yt-downloader.png",
+    image: ytDownloaderImage,
     link: "https://github.com/SubhashGuptha30/Youtube-Music-Downloader",
   },
   {

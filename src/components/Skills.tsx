@@ -5,14 +5,17 @@ import { Code } from "lucide-react";
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-gray-900/95">
+    <section id="skills" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-4">
-            <Code className="w-10 h-10 text-cyan-400" />
+          <h2
+            className="text-4xl font-bold mb-4 flex items-center justify-center gap-4 text-foreground relative glitch"
+            data-text="My Skills"
+          >
+            <Code className="w-10 h-10 text-primary" />
             My Skills
           </h2>
-          <p className="mt-4 text-lg leading-8 text-gray-400">
+          <p className="mt-4 text-lg leading-8 text-muted-foreground">
             A glimpse into my technical toolbox.
           </p>
         </div>
@@ -20,24 +23,26 @@ const Skills = () => {
           {skills.map((skill, index) => (
             <Card
               key={index}
-              className="bg-gray-800/40 border-gray-700 text-center group transition-all duration-300 flex flex-col h-full hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/10"
+              className="bg-card border-primary/30 text-center group transition-all duration-300 flex flex-col h-full hover:border-primary hover:shadow-lg hover:shadow-primary/10"
             >
               <CardHeader className="pt-8">
-                <div className="mx-auto mb-4 h-16 w-16 flex items-center justify-center rounded-full bg-cyan-400/10 text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-400/20 transition-all duration-300">
+                <div className="mx-auto mb-4 h-16 w-16 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                   <skill.icon className="h-8 w-8" />
                 </div>
-                <CardTitle className="text-xl font-semibold text-white">
+                <CardTitle className="text-xl font-semibold text-foreground">
                   {skill.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex-grow px-6 pb-8">
-                <p className="text-gray-400 mb-4">{skill.description}</p>
+                <p className="text-muted-foreground mb-4">
+                  {skill.description}
+                </p>
                 {skill.technologies && (
                   <div className="flex flex-wrap justify-center gap-3 mt-4">
                     {skill.technologies.map((tech, techIndex) => (
                       <div
                         key={techIndex}
-                        className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-700/50 hover:bg-cyan-400/20 transition-colors duration-300 group/tech cursor-pointer"
+                        className="flex items-center justify-center w-8 h-8 rounded-full bg-accent hover:bg-primary/20 transition-colors duration-300 group/tech cursor-pointer"
                         title={tech.name}
                       >
                         <svg

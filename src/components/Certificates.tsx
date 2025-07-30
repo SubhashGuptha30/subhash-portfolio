@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   X,
   ZoomIn,
@@ -74,10 +74,10 @@ const Certificates = () => {
     setZoomLevel(1);
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setSelectedCertificate(null);
     setZoomLevel(1);
-  };
+  }, []);
 
   const handleZoomIn = () => {
     setZoomLevel((prev) => Math.min(prev + 0.2, 3));
@@ -91,24 +91,27 @@ const Certificates = () => {
     setZoomLevel(1);
   };
 
-  const handleNavigate = (direction: "next" | "prev") => {
-    if (!selectedCertificate) return;
-    const currentIndex = filteredCertificates.findIndex(
-      (c) => c.id === selectedCertificate.id
-    );
-    if (currentIndex === -1) return;
+  const handleNavigate = useCallback(
+    (direction: "next" | "prev") => {
+      if (!selectedCertificate) return;
+      const currentIndex = filteredCertificates.findIndex(
+        (c) => c.id === selectedCertificate.id
+      );
+      if (currentIndex === -1) return;
 
-    let nextIndex;
-    if (direction === "next") {
-      nextIndex = (currentIndex + 1) % filteredCertificates.length;
-    } else {
-      nextIndex =
-        (currentIndex - 1 + filteredCertificates.length) %
-        filteredCertificates.length;
-    }
-    setSelectedCertificate(filteredCertificates[nextIndex]);
-    setZoomLevel(1);
-  };
+      let nextIndex;
+      if (direction === "next") {
+        nextIndex = (currentIndex + 1) % filteredCertificates.length;
+      } else {
+        nextIndex =
+          (currentIndex - 1 + filteredCertificates.length) %
+          filteredCertificates.length;
+      }
+      setSelectedCertificate(filteredCertificates[nextIndex]);
+      setZoomLevel(1);
+    },
+    [selectedCertificate, filteredCertificates]
+  );
 
   const handleDownload = () => {
     if (!selectedCertificate) return;
@@ -169,14 +172,14 @@ const Certificates = () => {
         status: "recent",
         text: "Recent",
         icon: CheckCircle,
-        color: "text-green-400",
+        color: "text-primary",
       };
     } else {
       return {
         status: "valid",
         text: "Valid",
         icon: CheckCircle,
-        color: "text-cyan-400",
+        color: "text-muted-foreground",
       };
     }
   };
@@ -197,17 +200,22 @@ const Certificates = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedCertificate]);
+  }, [selectedCertificate, handleNavigate, handleClose]);
 
   return (
-    <section id="certificates" className="py-20 bg-gray-800">
+    <section id="certificates" className="py-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Award className="w-8 h-8 text-cyan-400" />
-            <h2 className="text-4xl font-bold">Certificates</h2>
+            <Award className="w-8 h-8 text-primary" />
+            <h2
+              className="text-4xl font-bold text-foreground relative glitch"
+              data-text="Certificates"
+            >
+              Certificates
+            </h2>
           </div>
-          <p className="text-xl text-gray-300">
+          <p className="text-xl text-muted-foreground">
             My professional certifications and achievements
           </p>
         </div>
@@ -216,21 +224,21 @@ const Certificates = () => {
         <div className="mb-8 space-y-4">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Search certificates..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                className="pl-10 bg-input border-primary/30 text-foreground placeholder-muted-foreground"
               />
             </div>
             <div className="flex gap-2">
               <Select value={filterBy} onValueChange={setFilterBy}>
-                <SelectTrigger className="w-40 bg-gray-700 border-gray-600 text-white">
+                <SelectTrigger className="w-40 bg-input border-primary/30 text-foreground">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Filter by type" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600">
+                <SelectContent className="bg-popover border-primary/30 text-foreground">
                   <SelectItem value="all">All Types</SelectItem>
                   {certificationTypes.map((type) => (
                     <SelectItem key={type} value={type}>
@@ -240,35 +248,35 @@ const Certificates = () => {
                 </SelectContent>
               </Select>
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-32 bg-gray-700 border-gray-600 text-white">
+                <SelectTrigger className="w-32 bg-input border-primary/30 text-foreground">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600">
+                <SelectContent className="bg-popover border-primary/30 text-foreground">
                   <SelectItem value="date">By Date</SelectItem>
                   <SelectItem value="name">By Name</SelectItem>
                 </SelectContent>
               </Select>
-              <div className="flex border border-gray-600 rounded-md overflow-hidden">
+              <div className="flex border border-primary/30 rounded-md overflow-hidden">
                 <Button
-                  variant={viewMode === "grid" ? "default" : "ghost"}
+                  variant={viewMode === "grid" ? "secondary" : "ghost"}
                   size="sm"
                   onClick={() => setViewMode("grid")}
-                  className="rounded-none bg-gray-700 hover:bg-gray-600 text-white"
+                  className="rounded-none"
                 >
                   Grid
                 </Button>
                 <Button
-                  variant={viewMode === "list" ? "default" : "ghost"}
+                  variant={viewMode === "list" ? "secondary" : "ghost"}
                   size="sm"
                   onClick={() => setViewMode("list")}
-                  className="rounded-none bg-gray-700 hover:bg-gray-600 text-white"
+                  className="rounded-none"
                 >
                   List
                 </Button>
               </div>
             </div>
           </div>
-          <div className="text-sm text-gray-400">
+          <div className="text-sm text-muted-foreground">
             Showing {filteredCertificates.length} of {certificates.length}{" "}
             certificates
           </div>
@@ -277,11 +285,11 @@ const Certificates = () => {
         {/* Certificates Display */}
         {filteredCertificates.length === 0 ? (
           <div className="text-center py-12">
-            <Award className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-400 mb-2">
+            <Award className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-foreground mb-2">
               No certificates found
             </h3>
-            <p className="text-gray-500">
+            <p className="text-muted-foreground">
               Try adjusting your search or filter criteria
             </p>
           </div>
@@ -294,7 +302,7 @@ const Certificates = () => {
               return (
                 <div
                   key={certificate.id}
-                  className="group relative bg-gray-700 rounded-lg overflow-hidden cursor-pointer shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105"
+                  className="group relative bg-card border border-primary/30 rounded-lg overflow-hidden cursor-pointer shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:scale-105"
                   onClick={() => handleCertificateClick(certificate)}
                 >
                   {/* Certificate Image */}
@@ -304,13 +312,13 @@ const Certificates = () => {
                       alt={certificate.title}
                       className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                     <div className="absolute top-3 right-3 flex gap-2">
-                      <div className="bg-cyan-500 text-black text-xs px-2 py-1 rounded-full font-medium">
+                      <div className="bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-medium">
                         {certificate.subTitle}
                       </div>
                       <div
-                        className={`bg-gray-800 text-xs px-2 py-1 rounded-full font-medium flex items-center gap-1 ${status.color}`}
+                        className={`bg-card text-xs px-2 py-1 rounded-full font-medium flex items-center gap-1 ${status.color}`}
                       >
                         <StatusIcon className="w-3 h-3" />
                         {status.text}
@@ -320,30 +328,30 @@ const Certificates = () => {
 
                   {/* Certificate Details */}
                   <div className="p-4">
-                    <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2">
+                    <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2">
                       {certificate.title}
                     </h3>
 
-                    <div className="space-y-2 text-sm text-gray-300">
+                    <div className="space-y-2 text-sm text-muted-foreground">
                       <div className="flex items-center gap-2">
-                        <Building className="w-4 h-4 text-cyan-400" />
+                        <Building className="w-4 h-4 text-primary" />
                         <span className="truncate">
                           {certificate.certifiedBy}
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-cyan-400" />
+                        <Calendar className="w-4 h-4 text-primary" />
                         <span>{formatDate(certificate.date)}</span>
                       </div>
                     </div>
 
                     {/* Hover Actions */}
-                    <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                          <Award className="w-6 h-6 text-black" />
+                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-2">
+                          <Award className="w-6 h-6 text-primary-foreground" />
                         </div>
-                        <p className="text-white font-medium">
+                        <p className="text-foreground font-medium">
                           View Certificate
                         </p>
                       </div>
@@ -362,7 +370,7 @@ const Certificates = () => {
               return (
                 <div
                   key={certificate.id}
-                  className="group bg-gray-700 rounded-lg p-4 cursor-pointer shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-[1.02]"
+                  className="group bg-card border border-primary/30 rounded-lg p-4 cursor-pointer shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:scale-[1.02]"
                   onClick={() => handleCertificateClick(certificate)}
                 >
                   <div className="flex items-center gap-4">
@@ -372,20 +380,20 @@ const Certificates = () => {
                         alt={certificate.title}
                         className="w-full h-full object-cover rounded"
                       />
-                      <div className="absolute inset-0 bg-black/40 rounded" />
+                      <div className="absolute inset-0 bg-background/40 rounded" />
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-lg font-semibold text-white truncate">
+                        <h3 className="text-lg font-semibold text-foreground truncate">
                           {certificate.title}
                         </h3>
                         <div className="flex gap-2 flex-shrink-0">
-                          <div className="bg-cyan-500 text-black text-xs px-2 py-1 rounded-full font-medium">
+                          <div className="bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-medium">
                             {certificate.subTitle}
                           </div>
                           <div
-                            className={`bg-gray-800 text-xs px-2 py-1 rounded-full font-medium flex items-center gap-1 ${status.color}`}
+                            className={`bg-card text-xs px-2 py-1 rounded-full font-medium flex items-center gap-1 ${status.color}`}
                           >
                             <StatusIcon className="w-3 h-3" />
                             {status.text}
@@ -393,13 +401,13 @@ const Certificates = () => {
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-4 text-sm text-gray-300">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
                         <span className="flex items-center gap-1">
-                          <Building className="w-4 h-4 text-cyan-400" />
+                          <Building className="w-4 h-4 text-primary" />
                           {certificate.certifiedBy}
                         </span>
                         <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4 text-cyan-400" />
+                          <Calendar className="w-4 h-4 text-primary" />
                           {formatDate(certificate.date)}
                         </span>
                       </div>
@@ -419,16 +427,16 @@ const Certificates = () => {
           if (!isOpen) handleClose();
         }}
       >
-        <DialogContent className="max-w-5xl w-full h-[95vh] flex flex-col p-0 bg-gray-900 border-gray-700 text-white">
+        <DialogContent className="max-w-5xl w-full h-[95vh] flex flex-col p-0 bg-background border-primary/30 text-foreground">
           {selectedCertificate && (
             <TooltipProvider>
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-gray-700 flex-shrink-0">
+              <div className="flex items-center justify-between p-4 border-b border-primary/30 flex-shrink-0">
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg font-semibold truncate">
                     {selectedCertificate.title}
                   </h3>
-                  <div className="flex items-center gap-4 text-sm text-gray-400 mt-1">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground mt-1">
                     <span className="flex items-center gap-1">
                       <Building className="w-4 h-4" />
                       {selectedCertificate.certifiedBy}
@@ -483,7 +491,7 @@ const Certificates = () => {
                     </TooltipContent>
                   </Tooltip>
 
-                  <div className="w-[1px] h-6 bg-gray-700 mx-2"></div>
+                  <div className="w-[1px] h-6 bg-primary/30 mx-2"></div>
 
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -531,7 +539,7 @@ const Certificates = () => {
                     </TooltipContent>
                   </Tooltip>
 
-                  <div className="w-[1px] h-6 bg-gray-700 mx-2"></div>
+                  <div className="w-[1px] h-6 bg-primary/30 mx-2"></div>
 
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -558,7 +566,7 @@ const Certificates = () => {
                     </TooltipContent>
                   </Tooltip>
 
-                  <div className="w-[1px] h-6 bg-gray-700 mx-2"></div>
+                  <div className="w-[1px] h-6 bg-primary/30 mx-2"></div>
 
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -574,11 +582,11 @@ const Certificates = () => {
               </div>
 
               {/* Certificate Image */}
-              <div className="flex-1 overflow-auto p-4 flex justify-center items-center bg-gray-800/50">
+              <div className="flex-1 overflow-auto p-4 flex justify-center items-center bg-background/50">
                 <img
                   src={selectedCertificate.image}
                   alt={selectedCertificate.title}
-                  className="max-w-full max-h-full h-auto transition-transform duration-300 shadow-2xl rounded-lg"
+                  className="max-w-full max-h-full h-auto transition-transform duration-300 shadow-2xl rounded-lg border border-primary/20"
                   style={{
                     transform: `scale(${zoomLevel})`,
                     transformOrigin: "center center",
@@ -587,17 +595,17 @@ const Certificates = () => {
               </div>
 
               {/* Footer Info */}
-              <div className="p-4 border-t border-gray-700 bg-gray-800/50">
+              <div className="p-4 border-t border-primary/30 bg-background/50">
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-4">
-                    <span className="bg-cyan-500 text-black px-2 py-1 rounded text-xs font-medium">
+                    <span className="bg-primary text-primary-foreground px-2 py-1 rounded text-xs font-medium">
                       {selectedCertificate.subTitle}
                     </span>
-                    <span className="text-gray-400">
+                    <span className="text-muted-foreground">
                       Certificate ID: {selectedCertificate.id}
                     </span>
                   </div>
-                  <span className="text-gray-400">
+                  <span className="text-muted-foreground">
                     {Math.round(zoomLevel * 100)}% zoom
                   </span>
                 </div>

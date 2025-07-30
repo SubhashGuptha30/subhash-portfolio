@@ -97,29 +97,36 @@ const Portfolio = () => {
 
   const getProjectComplexity = (techStack: string[]) => {
     if (techStack.length >= 5)
-      return { level: "Advanced", color: "text-red-400", bg: "bg-red-500/20" };
+      return {
+        level: "Advanced",
+        color: "text-destructive",
+        bg: "bg-destructive/20",
+      };
     if (techStack.length >= 3)
       return {
         level: "Intermediate",
-        color: "text-yellow-400",
+        color: "text-yellow-400", // Keeping yellow for intermediate for now
         bg: "bg-yellow-500/20",
       };
     return {
       level: "Beginner",
-      color: "text-green-400",
-      bg: "bg-green-500/20",
+      color: "text-primary",
+      bg: "bg-primary/20",
     };
   };
 
   return (
-    <section id="portfolio" className="py-20 bg-gray-800">
+    <section id="portfolio" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-4">
-            <Folders className="w-10 h-10 text-cyan-400" />
+          <h2
+            className="text-4xl font-bold mb-4 flex items-center justify-center gap-4 text-foreground relative glitch"
+            data-text="My Portfolio"
+          >
+            <Folders className="w-10 h-10 text-primary" />
             My Portfolio
           </h2>
-          <p className="mt-4 text-lg leading-8 text-gray-400">
+          <p className="mt-4 text-lg leading-8 text-muted-foreground">
             A collection of projects I've poured my heart and soul into.
           </p>
         </div>
@@ -128,21 +135,21 @@ const Portfolio = () => {
         <div className="mb-8 space-y-4">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                className="pl-10 bg-input border-primary/30 text-foreground placeholder-muted-foreground"
               />
             </div>
             <div className="flex gap-2">
               <Select value={filterBy} onValueChange={setFilterBy}>
-                <SelectTrigger className="w-40 bg-gray-700 border-gray-600 text-white">
+                <SelectTrigger className="w-40 bg-input border-primary/30 text-foreground">
                   <Filter className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Filter by tech" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600">
+                <SelectContent className="bg-popover border-primary/30 text-foreground">
                   <SelectItem value="all">All Technologies</SelectItem>
                   {uniqueTechStacks.map((tech) => (
                     <SelectItem key={tech} value={tech}>
@@ -152,29 +159,29 @@ const Portfolio = () => {
                 </SelectContent>
               </Select>
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-32 bg-gray-700 border-gray-600 text-white">
+                <SelectTrigger className="w-32 bg-input border-primary/30 text-foreground">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600">
+                <SelectContent className="bg-popover border-primary/30 text-foreground">
                   <SelectItem value="name">By Name</SelectItem>
                   <SelectItem value="tech">By Complexity</SelectItem>
                 </SelectContent>
               </Select>
-              <div className="flex border border-gray-600 rounded-md overflow-hidden">
+              <div className="flex border border-primary/30 rounded-md overflow-hidden">
                 <Button
-                  variant={viewMode === "grid" ? "default" : "ghost"}
+                  variant={viewMode === "grid" ? "secondary" : "ghost"}
                   size="sm"
                   onClick={() => setViewMode("grid")}
-                  className="rounded-none bg-gray-700 hover:bg-gray-600 text-white"
+                  className="rounded-none"
                 >
                   <Grid3X3 className="w-4 h-4 mr-1" />
                   Grid
                 </Button>
                 <Button
-                  variant={viewMode === "list" ? "default" : "ghost"}
+                  variant={viewMode === "list" ? "secondary" : "ghost"}
                   size="sm"
                   onClick={() => setViewMode("list")}
-                  className="rounded-none bg-gray-700 hover:bg-gray-600 text-white"
+                  className="rounded-none"
                 >
                   <List className="w-4 h-4 mr-1" />
                   List
@@ -182,7 +189,7 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-          <div className="text-sm text-gray-400">
+          <div className="text-sm text-muted-foreground">
             Showing {filteredProjects.length} of {projects.length} projects
           </div>
         </div>
@@ -190,11 +197,11 @@ const Portfolio = () => {
         {/* Projects Display */}
         {filteredProjects.length === 0 ? (
           <div className="text-center py-12">
-            <Folders className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-400 mb-2">
+            <Folders className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-foreground mb-2">
               No projects found
             </h3>
-            <p className="text-gray-500">
+            <p className="text-muted-foreground">
               Try adjusting your search or filter criteria
             </p>
           </div>
@@ -209,7 +216,7 @@ const Portfolio = () => {
               return (
                 <Card
                   key={index}
-                  className="bg-gray-900 border-gray-700 text-white group h-96 flex flex-col transition-all duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/10 cursor-pointer relative overflow-hidden"
+                  className="bg-card border-primary/30 text-foreground group h-96 flex flex-col transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/10 cursor-pointer relative overflow-hidden"
                   onClick={() => handleCardClick(originalIndex, project.link)}
                 >
                   <div className="relative flex-1 overflow-hidden rounded-t-lg">
@@ -218,7 +225,7 @@ const Portfolio = () => {
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
 
                     {/* Project Badges */}
                     <div className="absolute top-3 right-3 flex gap-2">
@@ -227,27 +234,29 @@ const Portfolio = () => {
                       >
                         {complexity.level}
                       </div>
-                      <div className="bg-cyan-500/20 text-cyan-400 text-xs px-2 py-1 rounded-full font-medium">
+                      <div className="bg-primary/20 text-primary text-xs px-2 py-1 rounded-full font-medium">
                         {project.tech.length} Tech
                       </div>
                     </div>
 
                     {/* Hover Actions */}
-                    <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                          <Eye className="w-6 h-6 text-black" />
+                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-2">
+                          <Eye className="w-6 h-6 text-primary-foreground" />
                         </div>
-                        <p className="text-white font-medium">View Project</p>
+                        <p className="text-foreground font-medium">
+                          View Project
+                        </p>
                       </div>
                     </div>
                   </div>
 
                   <div className="p-6 flex-shrink-0">
-                    <CardTitle className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-cyan-400 transition-colors">
+                    <CardTitle className="text-xl font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
                       {project.title}
                     </CardTitle>
-                    <p className="text-gray-400 text-sm line-clamp-3 mb-4">
+                    <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
                       {project.description}
                     </p>
 
@@ -256,13 +265,13 @@ const Portfolio = () => {
                       {project.tech.slice(0, 3).map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="bg-gray-800 text-cyan-300 px-2 py-1 rounded text-xs font-medium border border-gray-700"
+                          className="bg-accent text-accent-foreground px-2 py-1 rounded text-xs font-medium border border-primary/20"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.tech.length > 3 && (
-                        <span className="bg-gray-800 text-gray-400 px-2 py-1 rounded text-xs font-medium border border-gray-700">
+                        <span className="bg-accent text-muted-foreground px-2 py-1 rounded text-xs font-medium border border-primary/20">
                           +{project.tech.length - 3}
                         </span>
                       )}
@@ -280,7 +289,7 @@ const Portfolio = () => {
                                 e.stopPropagation();
                                 handleProjectPreview(project);
                               }}
-                              className="flex-1 bg-gray-800 hover:bg-gray-700 text-cyan-400"
+                              className="flex-1 bg-accent hover:bg-accent/80 text-accent-foreground"
                             >
                               <Eye className="w-4 h-4 mr-1" />
                               Preview
@@ -299,7 +308,7 @@ const Portfolio = () => {
                                 e.stopPropagation();
                                 handleShare(project);
                               }}
-                              className="bg-gray-800 hover:bg-gray-700 text-cyan-400"
+                              className="bg-accent hover:bg-accent/80 text-accent-foreground"
                             >
                               <Share2 className="w-4 h-4" />
                             </Button>
@@ -326,7 +335,7 @@ const Portfolio = () => {
               return (
                 <Card
                   key={index}
-                  className="bg-gray-900 border-gray-700 text-white group hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/10 transition-all duration-300 cursor-pointer"
+                  className="bg-card border-primary/30 text-foreground group hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-pointer"
                   onClick={() => handleCardClick(originalIndex, project.link)}
                 >
                   <div className="flex items-center gap-6 p-6">
@@ -336,12 +345,12 @@ const Portfolio = () => {
                         alt={project.title}
                         className="w-full h-full object-cover rounded"
                       />
-                      <div className="absolute inset-0 bg-black/40 rounded" />
+                      <div className="absolute inset-0 bg-background/40 rounded" />
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-xl font-semibold text-white truncate group-hover:text-cyan-400 transition-colors">
+                        <h3 className="text-xl font-semibold text-foreground truncate group-hover:text-primary transition-colors">
                           {project.title}
                         </h3>
                         <div className="flex gap-2 flex-shrink-0">
@@ -350,13 +359,13 @@ const Portfolio = () => {
                           >
                             {complexity.level}
                           </div>
-                          <div className="bg-cyan-500/20 text-cyan-400 text-xs px-2 py-1 rounded-full font-medium">
+                          <div className="bg-primary/20 text-primary text-xs px-2 py-1 rounded-full font-medium">
                             {project.tech.length} Tech
                           </div>
                         </div>
                       </div>
 
-                      <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+                      <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
                         {project.description}
                       </p>
 
@@ -365,13 +374,13 @@ const Portfolio = () => {
                           {project.tech.slice(0, 4).map((tech, techIndex) => (
                             <span
                               key={techIndex}
-                              className="bg-gray-800 text-cyan-300 px-2 py-1 rounded text-xs font-medium border border-gray-700"
+                              className="bg-accent text-accent-foreground px-2 py-1 rounded text-xs font-medium border border-primary/20"
                             >
                               {tech}
                             </span>
                           ))}
                           {project.tech.length > 4 && (
-                            <span className="bg-gray-800 text-gray-400 px-2 py-1 rounded text-xs font-medium border border-gray-700">
+                            <span className="bg-accent text-muted-foreground px-2 py-1 rounded text-xs font-medium border border-primary/20">
                               +{project.tech.length - 4}
                             </span>
                           )}
@@ -388,7 +397,7 @@ const Portfolio = () => {
                                     e.stopPropagation();
                                     handleProjectPreview(project);
                                   }}
-                                  className="bg-gray-800 hover:bg-gray-700 text-cyan-400"
+                                  className="bg-accent hover:bg-accent/80 text-accent-foreground"
                                 >
                                   <Eye className="w-4 h-4" />
                                 </Button>
@@ -406,7 +415,7 @@ const Portfolio = () => {
                                     e.stopPropagation();
                                     handleShare(project);
                                   }}
-                                  className="bg-gray-800 hover:bg-gray-700 text-cyan-400"
+                                  className="bg-accent hover:bg-accent/80 text-accent-foreground"
                                 >
                                   <Share2 className="w-4 h-4" />
                                 </Button>
@@ -430,17 +439,17 @@ const Portfolio = () => {
       {/* Project Preview Modal */}
       {selectedProject && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-card border border-primary/50 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-foreground">
                   {selectedProject.title}
                 </h3>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setSelectedProject(null)}
-                  className="text-gray-400 hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   ×
                 </Button>
@@ -449,10 +458,10 @@ const Portfolio = () => {
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="w-full h-48 object-cover rounded-lg mb-4 border border-primary/20"
               />
 
-              <p className="text-gray-300 mb-4">
+              <p className="text-muted-foreground mb-4">
                 {selectedProject.description}
               </p>
 
@@ -460,7 +469,7 @@ const Portfolio = () => {
                 {selectedProject.tech.map((tech, index) => (
                   <span
                     key={index}
-                    className="bg-gray-800 text-cyan-300 px-3 py-1 rounded-full text-sm font-medium border border-gray-700"
+                    className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-medium border border-primary/20"
                   >
                     {tech}
                   </span>
@@ -476,7 +485,7 @@ const Portfolio = () => {
                     navigate(`/project/${originalIndex}`);
                     setSelectedProject(null);
                   }}
-                  className="flex-1 bg-cyan-500 hover:bg-cyan-600"
+                  className="flex-1 bg-primary hover:bg-primary/80 text-primary-foreground"
                 >
                   <Eye className="w-4 h-4 mr-2" />
                   View Full Project
@@ -485,7 +494,7 @@ const Portfolio = () => {
                   <Button
                     asChild
                     variant="outline"
-                    className="border-gray-600 text-white hover:bg-gray-700"
+                    className="border-primary text-primary hover:bg-primary/10"
                   >
                     <a
                       href={selectedProject.link}
