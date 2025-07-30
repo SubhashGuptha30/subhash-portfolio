@@ -22,7 +22,9 @@ try {
 
   // 4. Commit the changes
   console.log("Committing changes...");
-  execSync('git commit -m "Deploy to GitHub Pages"', { stdio: "inherit" });
+  execSync('git commit --allow-empty -m "Deploy to GitHub Pages"', {
+    stdio: "inherit",
+  });
   console.log("Changes committed.");
 
   // 5. Push the dist directory to the gh-pages branch
