@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build:domain",
-    "deploy": "git add dist && git commit -m \"Deploy to GitHub Pages\" && git subtree push --prefix dist origin gh-pages"
+    "deploy": "git add -f dist && git commit -m \"Deploy to GitHub Pages\" && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "@cyntler/react-doc-viewer": "^1.17.0",
