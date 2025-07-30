@@ -30,32 +30,33 @@ const Hero = ({ onSectionClick }: HeroProps) => {
           >
             <div className="space-y-2">
               <p className="text-cyan-400 text-lg">Hello, I'm</p>
-              <h1 className="text-5xl lg:text-7xl font-bold">
+              <h1 className="text-5xl lg:text-7xl font-bold font-mono text-green-400">
                 Subhash
-                <span className="text-cyan-400 px-2 lg:px-4">Guptha</span>
+                <span className="text-green-400 px-2 lg:px-4">Guptha</span>
+                <span className="animate-ping">_</span>
               </h1>
-              <div className="bg-cyan-400 text-gray-900 px-4 py-2 rounded-full inline-block">
-                <span className="font-semibold">AI Developer</span>
+              <div className="bg-green-400 text-gray-900 px-4 py-2 rounded-full inline-block">
+                <span className="font-semibold">AI/ML Cloud Engineer</span>
               </div>
             </div>
 
-            <p className="text-xl text-gray-300 leading-relaxed">
-              B.Tech AI student and tech enthusiast from Amrita Vishwa
-              Vidyapeetham, passionate about building intelligent solutions and
-              creating seamless user experiences.
+            <p className="text-xl text-gray-300 leading-relaxed font-mono">
+              AI/ML Cloud Engineer with a passion for developing and deploying
+              intelligent, scalable solutions. Experienced in building and
+              maintaining machine learning infrastructure on the cloud.
             </p>
             <div className="flex flex-wrap justify-center items-center gap-4 lg:flex-col">
               <div className="flex flex-wrap gap-4">
                 <Button
                   onClick={() => onSectionClick("portfolio")}
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+                  className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
                 >
                   View My Work <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => onSectionClick("contact")}
-                  className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 px-8 py-3 rounded-lg transition-all duration-300"
+                  className="border-green-400 text-green-400 hover:bg-green-400 hover:text-gray-900 px-8 py-3 rounded-lg transition-all duration-300"
                 >
                   Get In Touch
                 </Button>
@@ -63,7 +64,7 @@ const Hero = ({ onSectionClick }: HeroProps) => {
               <ResumeViewer pdfUrl={resumePdf}>
                 <Button
                   variant="outline"
-                  className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 py-3 rounded-lg transition-all duration-300 px-[115px]"
+                  className="border-green-400 text-green-400 hover:bg-green-400 hover:text-gray-900 py-3 rounded-lg transition-all duration-300 px-[115px]"
                 >
                   View Resume <FileText className="ml-2 w-4 h-4" />
                 </Button>
@@ -90,8 +91,8 @@ const Hero = ({ onSectionClick }: HeroProps) => {
                   />
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 bg-cyan-400 text-gray-900 px-4 py-2 rounded-full font-semibold transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-400/50">
-                3rd Year B.Tech
+              <div className="absolute -top-4 -right-4 bg-green-400 text-gray-900 px-4 py-2 rounded-full font-semibold transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-green-400/50">
+                AI/ML Cloud Engineer
               </div>
             </div>
           </div>
