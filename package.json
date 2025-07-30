@@ -10,7 +10,7 @@
     "build:domain": "vite build --mode domain",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:domain",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
