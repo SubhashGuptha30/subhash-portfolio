@@ -2,16 +2,14 @@
   "name": "portfolio-website",
   "homepage": "https://SubhashGuptha30.github.io/subhash-portfolio/",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:domain": "vite build --mode domain",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build:domain",
-    "deploy": "node deploy.js"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@cyntler/react-doc-viewer": "^1.17.0",
@@ -31,7 +29,6 @@
     "@tanstack/react-query": "^5.80.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "gh-pages": "^6.3.0",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
     "pdfjs-dist": "^4.4.168",
@@ -57,6 +54,7 @@
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
+    "gh-pages": "^6.3.0",
     "globals": "^15.9.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.11",
