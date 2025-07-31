@@ -4,19 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Subhash Guptha Portfolio</title>
-    <link
-      rel="shortcut icon"
-      href="/subhash-portfolio/favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <!-- Updated Content-Security-Policy to allow external image hosts and PDF worker -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'sha256-ocK6yydoOE+ygoaG3OejuzyGIOpQgu9IYbSPQGkJ4Is=' https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com https://i.postimg.cc; connect-src 'self' https://api.emailjs.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; frame-ancestors 'none'; form-action 'self';"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com; worker-src 'self' blob:; frame-ancestors 'none'; form-action 'self';"
     />
 
     <meta
@@ -31,25 +26,6 @@
       content="This is a portfoliio website designed and maintained by Subhash Guptha Gantasala."
     />
     <meta property="og:type" content="website" />
-
-    <script>
-      // GitHub Pages SPA routing fix
-      // This script handles the path parameter from 404 redirects
-      (function () {
-        var urlParams = new URLSearchParams(window.location.search);
-        var path = urlParams.get("path");
-
-        if (path) {
-          // Remove the path parameter from the URL
-          urlParams.delete("path");
-          var newSearch = urlParams.toString();
-          var newUrl = path + (newSearch ? "?" + newSearch : "");
-
-          // Update the URL without reloading the page
-          window.history.replaceState(null, null, newUrl);
-        }
-      })();
-    </script>
   </head>
 
   <body>
