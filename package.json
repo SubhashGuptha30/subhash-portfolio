@@ -7,9 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "build:domain": "vite build",
+    "build-only": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "node deploy.js"
+    "deploy": "gh-pages -d dist --dotfiles"
   },
   "dependencies": {
     "@cyntler/react-doc-viewer": "^1.17.0",
