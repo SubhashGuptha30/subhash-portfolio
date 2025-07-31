@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:domain": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "node deploy.js"
   },
   "dependencies": {
     "@cyntler/react-doc-viewer": "^1.17.0",
