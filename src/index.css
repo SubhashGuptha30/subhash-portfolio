@@ -174,4 +174,53 @@
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--ring));
   }
+
+  @keyframes move-background {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+
+  .animated-grid-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        rgba(120, 100%, 50%, 0.1) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(120, 100%, 50%, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: move-background 4s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes soft-gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animated-soft-gradient-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0a0a0a, #2a0a2a);
+    background-size: 400% 400%;
+    animation: soft-gradient 15s ease infinite;
+    z-index: -1;
+  }
 }

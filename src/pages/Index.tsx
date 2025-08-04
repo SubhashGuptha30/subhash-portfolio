@@ -54,7 +54,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-white">
+    <div className="min-h-screen bg-background text-white relative">
+      <div className="animated-grid-background"></div>
       <Navigation
         activeSection={activeSection}
         onSectionClick={scrollToSection}

@@ -86,8 +86,24 @@ export const watchlist = {
 };
 
 export const hobbies = [
-  { name: "Photography", icon: "Camera" },
-  { name: "Reading Sci-Fi", icon: "BookOpen" },
-  { name: "Gaming", icon: "Gamepad2" },
-  { name: "Foodie", icon: "Utensils" },
+  {
+    name: "Photography",
+    icon: "Camera",
+    description: "Capturing moments and telling stories through a lens.",
+  },
+  {
+    name: "Reading Sci-Fi",
+    icon: "BookOpen",
+    description: "Exploring futuristic worlds and mind-bending concepts.",
+  },
+  {
+    name: "Gaming",
+    icon: "Gamepad2",
+    description: "Diving into immersive digital adventures and challenges.",
+  },
+  {
+    name: "Foodie",
+    icon: "Utensils",
+    description: "Discovering new flavors and culinary experiences.",
+  },
 ];

@@ -9,8 +9,9 @@ import Footer from "@/components/Footer";
 
 const PersonalSpace = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="py-8 px-6 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-background text-foreground relative">
+      <div className="animated-soft-gradient-background"></div>
+      <header className="py-8 px-6 max-w-7xl mx-auto relative z-10">
         <Button asChild variant="ghost" className="group">
           <Link
             to="/"
@@ -22,7 +23,7 @@ const PersonalSpace = () => {
         </Button>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 pb-20">
+      <main className="max-w-7xl mx-auto px-6 pb-20 relative z-10">
         <div className="text-center mb-20 animate-fade-in">
           <div className="relative inline-block mb-6">
             <h1 className="text-6xl md:text-7xl font-bold text-primary">
