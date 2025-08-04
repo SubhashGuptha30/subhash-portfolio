@@ -59,6 +59,7 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+    font-size: 18px;
     font-family: "VT323", monospace;
     position: relative;
     overflow-x: hidden;
