@@ -54,7 +54,7 @@ const ResumeViewer: React.FC<ResumeViewerProps> = ({ pdfUrl, children }) => {
       <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col p-0">
         <DialogHeader className="p-6 pb-2 border-b">
           <DialogTitle className="flex items-center justify-between">
-            <span>Resume</span>
+            Resume
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"
