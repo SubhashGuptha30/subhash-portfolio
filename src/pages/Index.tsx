@@ -1,56 +1,99 @@
-
-import { useState, useEffect } from 'react';
-import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Languages from '@/components/Languages';
-import Portfolio from '@/components/Portfolio';
-import Skills from '@/components/Skills';
-import Certificates from '@/components/Certificates';
-import PersonalSpaceLink from '@/components/PersonalSpaceLink';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import { useState, useEffect } from "react";
+import Navigation from "@/components/Navigation";
+import AnimatedSection from "@/components/AnimatedSection";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Languages from "@/components/Languages";
+import Portfolio from "@/components/Portfolio";
+import Skills from "@/components/Skills";
+import Certificates from "@/components/Certificates";
+import PersonalSpaceLink from "@/components/PersonalSpaceLink";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 const Index = () => {
-  const [activeSection, setActiveSection] = useState('home');
-  
+  const [activeSection, setActiveSection] = useState("home");
+
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'languages', 'portfolio', 'skills', 'certificates', 'personal-space-link', 'contact'];
+      const sections = [
+        "home",
+        "about",
+        "languages",
+        "portfolio",
+        "skills",
+        "certificates",
+        "personal-space-link",
+        "contact",
+      ];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section);
             break;
           }
         }
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
-  
+
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      <Navigation activeSection={activeSection} onSectionClick={scrollToSection} />
+    <div className="min-h-screen bg-background text-white">
+      <Navigation
+        activeSection={activeSection}
+        onSectionClick={scrollToSection}
+      />
       <Hero onSectionClick={scrollToSection} />
-      <About />
-      <Languages />
-      <Portfolio />
-      <Skills />
-      <Certificates />
-      <PersonalSpaceLink />
-      <Contact />
+      <div className="bg-card py-20">
+        <AnimatedSection>
+          <About />
+        </AnimatedSection>
+      </div>
+      <div className="bg-background py-20">
+        <AnimatedSection>
+          <Languages />
+        </AnimatedSection>
+      </div>
+      <div className="bg-card py-20">
+        <AnimatedSection>
+          <Portfolio />
+        </AnimatedSection>
+      </div>
+      <div className="bg-background py-20">
+        <AnimatedSection>
+          <Skills />
+        </AnimatedSection>
+      </div>
+      <div className="bg-card py-20">
+        <AnimatedSection>
+          <Certificates />
+        </AnimatedSection>
+      </div>
+      <div className="bg-background py-20">
+        <AnimatedSection>
+          <PersonalSpaceLink />
+        </AnimatedSection>
+      </div>
+      <div className="bg-card py-20">
+        <AnimatedSection>
+          <Contact />
+        </AnimatedSection>
+      </div>
       <Footer />
     </div>
   );
