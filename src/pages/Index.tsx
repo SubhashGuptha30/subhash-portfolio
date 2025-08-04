@@ -10,6 +10,7 @@ import Certificates from "@/components/Certificates";
 import PersonalSpaceLink from "@/components/PersonalSpaceLink";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -95,6 +96,7 @@ const Index = () => {
         </AnimatedSection>
       </div>
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 };
