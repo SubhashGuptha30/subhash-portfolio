@@ -18,7 +18,13 @@ import {
   Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { certificates } from "@/data/certificates";
 import {
@@ -430,13 +436,12 @@ const Certificates = () => {
         <DialogContent className="max-w-5xl w-full h-[95vh] flex flex-col p-0 bg-background border-primary/30 text-foreground">
           {selectedCertificate && (
             <TooltipProvider>
-              {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-primary/30 flex-shrink-0">
+              <DialogHeader className="flex items-center justify-between p-4 border-b border-primary/30 flex-shrink-0">
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold truncate">
+                  <DialogTitle className="text-lg font-semibold truncate">
                     {selectedCertificate.title}
-                  </h3>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mt-1">
+                  </DialogTitle>
+                  <DialogDescription className="flex items-center gap-4 text-sm text-muted-foreground mt-1">
                     <span className="flex items-center gap-1">
                       <Building className="w-4 h-4" />
                       {selectedCertificate.certifiedBy}
@@ -458,9 +463,8 @@ const Certificates = () => {
                       })()}
                       {getCertificateStatus(selectedCertificate.date).text}
                     </span>
-                  </div>
+                  </DialogDescription>
                 </div>
-
                 <div className="flex items-center gap-1">
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -579,7 +583,7 @@ const Certificates = () => {
                     </TooltipContent>
                   </Tooltip>
                 </div>
-              </div>
+              </DialogHeader>
 
               {/* Certificate Image */}
               <div className="flex-1 overflow-auto p-4 flex justify-center items-center bg-background/50">
