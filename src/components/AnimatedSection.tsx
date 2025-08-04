@@ -18,10 +18,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
+        setIsVisible(entry.isIntersecting);
       },
       {
         root: null,
@@ -33,7 +30,9 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     observer.observe(node);
 
     return () => {
-      observer.unobserve(node);
+      if (node) {
+        observer.unobserve(node);
+      }
     };
   }, []);
 
