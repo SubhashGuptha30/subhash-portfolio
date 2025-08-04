@@ -58,7 +58,8 @@ const Navigation = ({
                 <li key={section}>
                   <a
                     href={`#${section}`}
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
                       onSectionClick(section);
                       closeMenu();
                     }}
