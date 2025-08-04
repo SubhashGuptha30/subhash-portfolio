@@ -21,18 +21,24 @@ const Hero = ({ onSectionClick }: HeroProps) => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden py-20 lg:py-0 px-6"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden py-20 lg:py-0 px-6 bg-background"
     >
+      <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent animate-pulse-slow"></div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-6 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div
-            className={`space-y-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            <div className="space-y-3">
+          <div className="space-y-6">
+            <div
+              className={`space-y-3 transition-all duration-700 ${
+                isVisible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-10"
+              }`}
+            >
               <p className={textStyle}>
                 <span className={commandStyle}>{">"}</span> Hello, I'm
               </p>
@@ -58,13 +64,25 @@ const Hero = ({ onSectionClick }: HeroProps) => {
               />
             </div>
 
-            <p className={`${textStyle} leading-relaxed`}>
+            <p
+              className={`${textStyle} leading-relaxed transition-all duration-700 delay-200 ${
+                isVisible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-10"
+              }`}
+            >
               <span className={commandStyle}>{">"}</span> AI/ML Cloud Engineer
               with a passion for developing and deploying intelligent, scalable
               solutions. Experienced in building and maintaining machine
               learning infrastructure on the cloud.
             </p>
-            <div className="flex flex-col items-start gap-4">
+            <div
+              className={`flex flex-col items-start gap-4 transition-all duration-700 delay-300 ${
+                isVisible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-10"
+              }`}
+            >
               <div className="flex flex-wrap gap-4">
                 <Button
                   onClick={() => onSectionClick("portfolio")}
@@ -91,15 +109,13 @@ const Hero = ({ onSectionClick }: HeroProps) => {
             </div>
           </div>
           <div
-            className={`flex justify-center transition-all duration-1000 delay-300 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
+            className={`flex justify-center transition-all duration-1000 delay-500 ${
+              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
             }`}
           >
             <div className="relative group w-80 h-80">
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
-              <div className="w-full h-full rounded-full border-2 border-primary bg-background p-1 transition-all duration-500 group-hover:scale-105">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-400 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500 animate-pulse group-hover:animate-none"></div>
+              <div className="relative w-full h-full rounded-full border-2 border-primary bg-background p-1 transition-all duration-500 group-hover:scale-105">
                 <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
                   <img
                     alt="Subhash Guptha"
