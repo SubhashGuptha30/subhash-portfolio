@@ -1,73 +1,52 @@
-# Welcome to your Lovable project
+# Subhash Guptha - Personal Portfolio
 
-## Project info
+This is the repository for my personal portfolio website, designed to showcase my skills, projects, and creative works.
 
-**URL**: https://lovable.dev/projects/64ec23c6-2a90-4734-826f-1365a575c1ed
+**Live Site:** [subhashguptha.online](https://subhashguptha.online/)
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Animated Hero Section:** A dynamic and engaging hero section with animated backgrounds, text effects, and a typing animation for job titles.
+- **Interactive Sections:** Smooth-scrolling navigation and fade-in animations for all content sections.
+- **Project Portfolio:** A dedicated section to showcase my professional and personal projects.
+- **Personal Space:** A unique section that offers a glimpse into my creative side, including:
+  - **Creative Gallery:** A masonry-style gallery of my scripts and stories with interactive modals.
+  - **Photo Gallery:** A beautiful masonry layout of my photography with a full-screen lightbox viewer.
+  - **Watchlist:** An interactive tabbed view of my favorite movies, series, anime, and franchises.
+  - **Hobbies:** An enhanced display of my hobbies and interests with descriptions and hover effects.
+- **Scroll to Top Button:** A convenient button that appears on scroll to allow users to easily navigate back to the top of the page.
+- **Responsive Design:** Fully responsive layout that looks great on all devices, from mobile phones to desktop computers.
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/64ec23c6-2a90-4734-826f-1365a575c1ed) and start prompting.
+- **Framework:** [React](https://reactjs.org/) with [Vite](https://vitejs.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
+- **Animations:** [Lucide React](https://lucide.dev/) for icons and custom CSS animations.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Setup and Installation
 
-**Use your preferred IDE**
+To run this project locally, follow these steps:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/SubhashGuptha30/subhash-portfolio.git
+    ```
+2.  **Navigate to the project directory:**
+    ```sh
+    cd subhash-portfolio
+    ```
+3.  **Install the dependencies:**
+    ```sh
+    npm install
+    ```
+4.  **Start the development server:**
+    ```sh
+    npm run dev
+    ```
+    The site will be available at `http://localhost:8080` (or another port if 8080 is in use).
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Deployment
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/64ec23c6-2a90-4734-826f-1365a575c1ed) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This website is deployed and hosted using [GitHub Pages](https://pages.github.com/). The `deploy` script in `package.json` handles the build and deployment process, pushing the final static files to the `gh-pages` branch.

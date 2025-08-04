@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Loader from "./components/Loader";
 import PersonalSpace from "./pages/PersonalSpace";
 import ProjectDetail from "./pages/ProjectDetail";
+import Documentation from "./pages/Documentation";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/personal-space" element={<PersonalSpace />} />
             <Route path="/project/:id" element={<ProjectDetail />} />
+            <Route path="/documentation" element={<Documentation />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THIS LINE */}
 
             {/* Catch-all route for 404 Not Found */}
