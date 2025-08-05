@@ -10,6 +10,7 @@ import Loader from "./components/Loader";
 import PersonalSpace from "./pages/PersonalSpace";
 import ProjectDetail from "./pages/ProjectDetail";
 import Documentation from "./pages/Documentation";
+import { incrementViews, getViews } from "./integrations/firebase/client";
 
 const queryClient = new QueryClient();
 
@@ -17,12 +18,13 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate app initialization
-    const timer = setTimeout(() => {
+    const initializeApp = async () => {
+      await incrementViews();
+      await getViews(); // This ensures we have a connection and initial data
       setIsLoading(false);
-    }, 2500); // 2.5 seconds loading time
+    };
 
-    return () => clearTimeout(timer);
+    initializeApp();
   }, []);
 
   if (isLoading) {
