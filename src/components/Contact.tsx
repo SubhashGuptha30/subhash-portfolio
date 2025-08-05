@@ -9,6 +9,7 @@ import {
   Phone,
   MapPin,
   Building,
+  Loader2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,6 +35,44 @@ const formSchema = z.object({
     .string()
     .min(10, { message: "Message must be at least 10 characters long." }),
 });
+
+const ContactInfoCard = ({
+  icon: Icon,
+  title,
+  content,
+  href,
+}: {
+  icon: React.ElementType;
+  title: string;
+  content: React.ReactNode;
+  href?: string;
+}) => {
+  const contentClass =
+    "text-muted-foreground group-hover:text-primary transition-colors text-sm leading-relaxed";
+  const cardContent = (
+    <div className="flex items-start space-x-4">
+      <Icon className="w-8 h-8 text-primary mt-1" />
+      <div>
+        <h4 className="font-semibold text-foreground">{title}</h4>
+        <div className={contentClass}>{content}</div>
+      </div>
+    </div>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block group"
+      >
+        {cardContent}
+      </a>
+    );
+  }
+  return <div className="group">{cardContent}</div>;
+};
 
 const Contact = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -73,8 +112,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="contact" className="py-16 md:py-20 relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent"></div>
+      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <h2
             className="text-3xl sm:text-4xl font-bold mb-4 text-foreground relative glitch"
@@ -83,81 +125,43 @@ const Contact = () => {
             Let's Connect
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to work together? Let's discuss your project
+            Have a project in mind or just want to say hi? Feel free to reach
+            out.
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           <div className="space-y-8">
-            <div>
-              <h3
-                className="text-2xl font-semibold text-primary mb-6 relative glitch"
-                data-text="Get In Touch"
-              >
-                Get In Touch
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <Mail className="w-6 h-6 text-primary" />
-                  <span className="text-foreground text-sm sm:text-base break-all">
-                    subhashguptha308@gmail.com
-                  </span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Phone className="w-6 h-6 text-primary" />
-                  <span className="text-foreground text-sm sm:text-base">
-                    +91 7306677599
-                  </span>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <Building className="w-6 h-6 text-primary mt-0.5" />
-                  <div>
-                    <div className="text-primary font-medium text-sm">
-                      Work Address
-                    </div>
-                    <span className="text-muted-foreground text-sm leading-relaxed">
-                      Amrita Vishwa Vidyapeetham Amaravati Campus,
-                      <br />
-                      Kuragallu Village, Mangalagiri (M),
-                      <br />
-                      Guntur, Andhra Pradesh – 522503, India
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <MapPin className="w-6 h-6 text-primary mt-0.5" />
-                  <div>
-                    <div className="text-primary font-medium text-sm">
-                      Home Address
-                    </div>
-                    <span className="text-muted-foreground text-sm leading-relaxed">
-                      V K Rayapuram, Samalkota(M),
-                      <br />
-                      Kakinada, Andhra Pradesh - 533434, India
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Linkedin className="w-6 h-6 text-primary" />
-                  <a
-                    href="https://www.linkedin.com/in/subhash-guptha-b65086290"
-                    className="text-foreground hover:text-primary transition-colors text-sm sm:text-base"
-                  >
-                    LinkedIn Profile
-                  </a>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Github className="w-6 h-6 text-primary" />
-                  <a
-                    href="https://github.com/SubhashGuptha30"
-                    className="text-foreground hover:text-primary transition-colors text-sm sm:text-base"
-                  >
-                    GitHub Profile
-                  </a>
-                </div>
-              </div>
-            </div>
+            <ContactInfoCard
+              icon={Mail}
+              title="Email"
+              content="subhashguptha308@gmail.com"
+              href="mailto:subhashguptha308@gmail.com"
+            />
+            <ContactInfoCard
+              icon={Phone}
+              title="Phone"
+              content="+91 7306677599"
+              href="tel:+917306677599"
+            />
+            <ContactInfoCard
+              icon={Linkedin}
+              title="LinkedIn"
+              content="linkedin.com/in/subhash-guptha-b65086290"
+              href="https://www.linkedin.com/in/subhash-guptha-b65086290"
+            />
+            <ContactInfoCard
+              icon={Github}
+              title="GitHub"
+              content="github.com/SubhashGuptha30"
+              href="https://github.com/SubhashGuptha30"
+            />
+            <ContactInfoCard
+              icon={MapPin}
+              title="Location"
+              content="Kakinada, Andhra Pradesh, India"
+            />
           </div>
-          <Card className="bg-card border-primary/30">
+          <Card className="bg-card/80 backdrop-blur-sm border-primary/30">
             <CardHeader>
               <CardTitle className="text-primary">Send a Message</CardTitle>
             </CardHeader>
@@ -243,7 +247,7 @@ const Contact = () => {
                     className="w-full bg-primary hover:bg-primary/80 text-primary-foreground transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
                     {isSubmitting ? (
-                      <>Sending...</>
+                      <Loader2 className="w-5 h-5 animate-spin" />
                     ) : (
                       <>
                         Send Message <ArrowRight className="ml-2 w-4 h-4" />

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, FileText, Eye } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { subscribeToViews } from "@/integrations/firebase/client";
 import ResumeViewer from "./ResumeViewer";
 import resumePdf from "/uploads/Resume.pdf";
 import { TypeAnimation } from "react-type-animation";
@@ -12,14 +11,9 @@ interface HeroProps {
 
 const Hero = ({ onSectionClick }: HeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [views, setViews] = useState<number | null>(null);
 
   useEffect(() => {
     setIsVisible(true);
-    const unsubscribe = subscribeToViews((count) => {
-      setViews(count);
-    });
-    return () => unsubscribe();
   }, []);
 
   const commandStyle = "text-primary font-bold";
@@ -69,12 +63,6 @@ const Hero = ({ onSectionClick }: HeroProps) => {
                 className="bg-primary/10 border border-primary/30 text-primary px-4 py-2 rounded-sm inline-block font-semibold"
                 repeat={Infinity}
               />
-              <div className="flex items-center gap-2 text-muted-foreground mt-4">
-                <Eye className="w-5 h-5" />
-                <span>
-                  {views !== null ? `${views.toLocaleString()} views` : "..."}
-                </span>
-              </div>
             </div>
 
             <p
