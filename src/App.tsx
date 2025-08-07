@@ -20,7 +20,7 @@ const App = () => {
     // Simulate app initialization
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000); // 5 seconds loading time
+    }, 3500); // 3.5 seconds loading time
 
     return () => clearTimeout(timer);
   }, []);

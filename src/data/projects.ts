@@ -1,4 +1,5 @@
 import ytDownloaderImage from "/uploads/yt-downloader.png";
+import viewImage from "/uploads/yt-downloader-view.png";
 
 export const projects = [
   {
@@ -30,6 +31,7 @@ export const projects = [
     tech: ["Python", "CustomTkinter", "Tkinter"],
     image: ytDownloaderImage,
     link: "https://github.com/SubhashGuptha30/Youtube-Music-Downloader",
+    projectImage1: viewImage,
   },
   {
     title: "Quantum-Inspired Grey Wolf Optimization",
