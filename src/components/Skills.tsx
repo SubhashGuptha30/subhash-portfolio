@@ -25,7 +25,7 @@ const Skills = () => {
               A glimpse into my technical toolbox.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 justify-center">
             {skills.map((skill, index) => (
               <Card
                 key={index}
